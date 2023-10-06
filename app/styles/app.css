@@ -130,3 +130,21 @@ a.github img {
 a.github:hover {
   background: var(--github-hover);
 }
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+}
+
+.button {
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+a {
+  color: lightblue;
+}
