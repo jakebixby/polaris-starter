@@ -2,13 +2,14 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
+import { LinkTo } from '@ember/routing';
 import { service } from '@ember/service';
+
 import { resource } from 'ember-resource';
+import { Announce } from 'polaris-starter/components/announce';
 
 import type { TOC } from '@ember/component/template-only';
 import type State from 'polaris-starter/services/state';
-import { Announce } from 'polaris-starter/components/announce';
-import { LinkTo } from '@ember/routing';
 
 interface ReminderData {
    title?: string;
