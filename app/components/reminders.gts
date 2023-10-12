@@ -34,6 +34,17 @@ export const Reminder: TOC<ReminderComponent> = <template>
 </template>
 
 export default class Reminders extends Component {
+  <template>
+    <form>
+      <input value={{this.title}} {{on "input" (fn this.onInput "title")}}/>
+      <textarea value={{this.description}} {{on "input" (fn this.onInput "description")}}//>
+      <input type="date" value={{this.dueDate}} {{on "input" (fn this.onInput "dueDate")}}//>
+      <button type="button" class="button" {{on "click" (fn this.addReminder this.data)}}>Add Reminder</button>
+    </form>
+    <Announce @announcement="Reminder added!" @show={{this.added}} @hide={{this.hide}}/>
+    <LinkTo @route="list">Reminders</LinkTo>
+  </template>
+
   @service('state') declare state: State;
 
   @tracked added: boolean = false;
@@ -75,14 +86,4 @@ export default class Reminders extends Component {
     return this.state.values() as [ReminderData];
   }
 
-  <template>
-    <form>
-      <input value={{this.title}} {{on "input" (fn this.onInput "title")}}/>
-      <textarea value={{this.description}} {{on "input" (fn this.onInput "description")}}//>
-      <input type="date" value={{this.dueDate}} {{on "input" (fn this.onInput "dueDate")}}//>
-      <button type="button" class="button" {{on "click" (fn this.addReminder this.data)}}>Add Reminder</button>
-    </form>
-    <Announce @announcement="Reminder added!" @show={{this.added}} @hide={{this.hide}}/>
-    <LinkTo @route="list">Reminders</LinkTo>
-  </template>
 }

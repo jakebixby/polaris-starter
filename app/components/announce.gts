@@ -1,5 +1,6 @@
 import { modifier } from 'ember-modifier';
-import { TOC } from '@ember/component/template-only';
+
+import type { TOC } from '@ember/component/template-only';
 
 type Named = { callback: Function };
 interface FadeInSignature {
@@ -9,7 +10,7 @@ interface FadeInSignature {
   }
 }
 
-const fadeIn = modifier<FadeInSignature> ((element, [], named) => {
+const fadeIn = modifier<FadeInSignature> ((element, _, named) => {
   let animation = element.animate([
     { opacity: 0},
     { transform: "translateX(-100px)" },
@@ -29,12 +30,10 @@ const fadeIn = modifier<FadeInSignature> ((element, [], named) => {
 });
 
 interface AnnounceSignature {
-  Args: {
-    announcement: string;
-    show: boolean;
-    hide: Function;
-  }
-};
+  announcement: string;
+  show: boolean;
+  hide: Function;
+}
 
 export const Announce: TOC<AnnounceSignature> = <template>
   {{#if @show}}
